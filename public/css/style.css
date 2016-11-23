@@ -1,0 +1,134 @@
+body {
+	background: #eee url(../img/icon_bg.png) repeat;
+}
+
+.navbar {
+	background: #eee;
+	margin-bottom: 0;
+	padding: 8px 16px;
+}
+.navbar img {
+	vertical-align: bottom;
+}
+.logo-text-small {
+	text-transform: uppercase;
+}
+.light.container,
+footer {
+	background: #eee;
+} 
+.intro.jumbotron {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-bottom: 0;
+  background-color: #eee;
+}
+.intro.jumbotron .info-block {
+  max-width: 40rem;
+}
+.intro.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.intro.jumbotron-heading {
+  font-weight: 300;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.card .img {
+	display: block;
+	width: 280px;
+	height: 158px;
+	margin: 0 auto;
+}
+.card .img,
+.gist-screenshot .img {
+	background-size: cover;
+	background-position: center center;
+	background-color: #ccc;
+}
+.gist-screenshot .img {
+	width: 480px;
+	height: 271px;
+}
+.gist-card {
+	margin-top: 50px;
+	padding: 3em;
+	line-heignt: 1.5em;
+}
+.gist-card-wrapper {
+	display: flex;
+}
+.gist-screenshot,
+.gist-details {
+	display: flex;
+	flex-direction: column;
+}
+.gist-screenshot {
+	flex-grow: 1;
+}
+.gist-details {
+	display: flex;
+	flex-direction: column;
+}
+.gist-name {
+	text-transform: UPPERCASE;
+  	font-weight: bold;
+  	margin-bottom: 15px;
+}
+.gist-details .stats {
+	color: #fa4940;
+}
+.gist-description {
+	margin-bottom: 15px;
+	text-align: left;
+}
+
+.profile-image {
+	height: 104px;
+}
+.profile-stats a {
+	text-decoration: none;
+}
+
+footer {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+footer p {
+	margin-bottom: .25rem;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RoboGist:: home</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<nav class="navbar">
+	<div class="container">
+			<img src="/img/logo-main.png" /><small class="logo-text-small">Store</small>
+			<div class="pull-right nav">
+				<ul>
+					<% if( typeof user === 'undefined' ) { %>
+						<a class="nav-link" href="/">home</a>
+						<a class="nav-link" href="/browse">browse</a>
+						<a class="nav-link" href="/login">login</a>
+					<% } else { %>
+						<a class="nav-link" href="/">home</a>
+						<a class="nav-link" href="/browse">browse</a>
+						<a class="nav-link" href="/gist/add">add gist</a>
+						<a class="nav-link" href="#" onclick="document.getElementById('logoutForm').submit()">logout</a>
+						<form action="logout" method="post" id="logoutForm"></form>
+					<% } %>
+				</ul>
+			</div>
+	</div>
+</nav>
+
+<div class="light container">
+<section class="intro jumbotron text-xs-center">
+	<div class="center-block info-block">
+		<h1 class="jumbotron-heading">RoboGist <sub>v1</sub></h1>
+		<p class="lead text-muted">Userscript and Userstyle manager using gists as a storage medium. Execute JS and CSS files on the fly, share and discover new scripts!</p>
+		<p>
+			<a href="https://chrome.google.com/webstore/detail/robo-gist/oaeloccbgneegbhgklolmpbocnbkldhh" class="btn btn-primary" target="_blank">Install RoboGist</a>
+			<a href="https://github.com/rlemon/RoboGist" class="btn btn-secondary" target="_blank">Contribute</a>
+		</p>
+	</div>
+</section>
+</div>
+
+<div class="light container text-center">
+<p>The store is under heavy development. Please report any issues to the <a href="https://github.com/rlemon/robogist.rlemon.ca/issues" target="_blank">Issue Tracker</a>. For now you can <a href="/browse">Browse the store</a></p>
+<!-- 	<h2>Random Gists</h2>
+	<div class="row">
+		
+		<div class="col-md-4">
+			<div class="card">
+				<h4>sample title</h4>
+	            <img src="http://lorempizza.com/280/158/<%= Math.random().toString().slice(2) %>" alt="pizza!">
+	            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	            consequat...</p>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="card">
+				<h4>sample title</h4>
+	            <img src="http://lorempizza.com/280/158/<%= Math.random().toString().slice(2) %>" alt="pizza!">
+	            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	            consequat...</p>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="card">
+				<h4>sample title</h4>
+	            <img src="http://lorempizza.com/280/158/<%= Math.random().toString().slice(2) %>" alt="pizza!">
+	            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	            consequat...</p>
+			</div>
+		</div>
+
+	</div> -->
+</div>
+
+
+<footer class="text-muted">
+	<div class="container">
+		<p class="float-xs-right">
+			<a href="#">Back to top</a>
+		</p>
+		<p>RoboGist was made with love❤ by <a href="http://rlemon.ca" target="_blank">rlemon</a>.</p>
+		<p>Want to help? <a href="https://github.com/rlemon/RoboGist">Contribute on GitHub</a> or create something awesome and <a href="/gist/add">share it!</a>.</p>
+	</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RoboGist:: profile</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+	<div class="container">
+			<img src="/img/logo-main.png" /><small class="logo-text-small">Store</small>
+			<div class="pull-right nav">
+				<ul>
+					<% if( typeof user === 'undefined' ) { %>
+						<a class="nav-link" href="/">home</a>
+						<a class="nav-link" href="/browse">browse</a>
+						<a class="nav-link" href="/login">login</a>
+					<% } else { %>
+						<a class="nav-link" href="/">home</a>
+						<a class="nav-link" href="/browse">browse</a>
+						<a class="nav-link" href="/gist/add">add gist</a>
+						<a class="nav-link" href="#" onclick="document.getElementById('logoutForm').submit()">logout</a>
+						<form action="logout" method="post" id="logoutForm"></form>
+					<% } %>
+				</ul>
+			</div>
+	</div>
+</nav>
+
+<div class="light container">
+<h2>User Profile</h2>
+<div class="row">
+<div class="col-md-2"><img class="img-circle profile-image" src="<%= user.avatar_url %>" /></div>
+<div class="col-md-10 profile-stats">
+        <h4 class="stats-heading"><%= user.login %> <small> <%= user.location %></small></h4>
+		<hr style="margin:8px auto">
+        <a href="<%=user.html_url%>" target="_blank"><span class="label label-primary"><i class="fa fa-github"></i> Github</span></a>
+        <a href="<%=/^(https?:)?\/\//.test(user.blog) ? user.blog : '//' + user.blog%>" target="_blank"><span class="label label-warning"><i class="fa fa-website"></i> Website</span></a>
+        <span class="label label-info"><%= gists.length %> Gists</span>
+        <span class="label label-default">Joined <%= user.joined %></span>
+</div>
+
+</div>
+<div class="light container text-center">
+	<h2>Browse Gists</h2>
+	<div class="row">
+		<% if( gists.length === 0 ) { %>
+		<p>no gists in the store</p>
+		<% } %>
+		<% for( const gist of gists ) { %>
+
+		<div class="col-md-4">
+			<div class="card">
+				<h4><a href="/gist/view/<%=gist.id%>">⇱ <%= gist.name %></a></h4>
+	            <div class="img" style="background-image:url(/user-images/<%= gist.screenshot %>)"></div>
+				<div class="stars">
+					<span class="fa fa-star-o"></span>
+					<span class="fa fa-star-o"></span>
+					<span class="fa fa-star"></span>
+					<span class="fa fa-star"></span>
+					<span class="fa fa-star"></span>
+				</div>
+	            <p class="text-left"><%= gist.description %></p>
+	            <p class="text-left">matches: <code>/<%= gist.matches %>/</code></p>
+	            <p class="text-left">gist id: <a href="http://gist.github.com/<%=gist.gistid%>" target="_blank"><%=gist.gistid%></a></p>
+	            <p class="text-right">submitted by: <a href="user/<%= gist.userid %>"><%= gist.username %></a></p>
+			</div>
+		</div>
+
+		<% } %>
+	</div>
+</div>
+<footer class="text-muted">
+	<div class="container">
+		<p class="float-xs-right">
+			<a href="#">Back to top</a>
+		</p>
+		<p>RoboGist was made with love❤ by <a href="http://rlemon.ca" target="_blank">rlemon</a>.</p>
+		<p>Want to help? <a href="https://github.com/rlemon/RoboGist">Contribute on GitHub</a> or create something awesome and <a href="/gist/add">share it!</a>.</p>
+	</div>
+</footer>
+
+</body>
+</html>

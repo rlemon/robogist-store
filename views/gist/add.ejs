@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RoboGist:: add</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+	<div class="container">
+			<img src="/img/logo-main.png" /><small class="logo-text-small">Store</small>
+			<div class="pull-right nav">
+				<ul>
+					<% if( typeof user === 'undefined' ) { %>
+						<a class="nav-link" href="/">home</a>
+						<a class="nav-link" href="/browse">browse</a>
+						<a class="nav-link" href="/login">login</a>
+					<% } else { %>
+						<a class="nav-link" href="/">home</a>
+						<a class="nav-link" href="/browse">browse</a>
+						<a class="nav-link" href="/gist/add">add gist</a>
+						<a class="nav-link" href="#" onclick="document.getElementById('logoutForm').submit()">logout</a>
+						<form action="logout" method="post" id="logoutForm"></form>
+					<% } %>
+				</ul>
+			</div>
+	</div>
+</nav>
+
+<div class="light container text-center">
+<h2>New Gist</h2>
+<% 
+/* labels for error messages */
+const labels = {
+	danger: 'Ohh snap!',
+	warning: 'Warning!',
+	info: 'Heads up!',
+	success: 'Well done!'
+};
+%>
+<% for( const error of errors ) { %>
+	<div class="alert alert-<%=error.type%>" role="alert"><strong><%=labels[error.type] || 'Hey!'%></strong> <%=error.message%></div>
+<% } %>
+<form class="form-horizontal" enctype="multipart/form-data" action="/add-gist" method="post">
+	<!-- name -->
+	<div class="form-group">
+		<label for="gistName" class="col-sm-2 control-label">Gist Name</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="gistName" name="name" maxlength="255" required>
+		</div>
+	</div>
+	<!-- ID -->
+	<div class="form-group">
+		<label for="gistID" class="col-sm-2 control-label">Gist ID or URL</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="gistID" name="id" maxlength="255" required>
+		</div>
+	</div>
+	<!-- description -->
+	<div class="form-group">
+		<label for="gistDescription" class="col-sm-2 control-label">Description</label>
+		<div class="col-sm-10">
+			<textarea id="gistDescription" class="form-control" maxlength="1024" name="description" required></textarea>
+			<p class="help-block text-left">max length is 1024 characters.</p>
+		</div>
+	</div>
+	<!-- screenshot -->
+	<div class="form-group">
+		<label for="gistScreenshot" class="col-sm-2 control-label">Screenshot</label>
+		<input type="file" id="gistScreenshot" name="screenshot">
+		<p class="help-block text-left">must be 800 x 600 and less tham 1MB.</p>
+	</div>
+	<!-- matches -->
+	<div class="form-group">
+		<label for="gistMatches" class="col-sm-2 control-label">Gist Matches</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="gistMatches" name="matches" maxlength="255" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" class="btn btn-default">Submit</button>
+		</div>
+	</div>
+</form>
+
+
+</div>
+
+
+<footer class="text-muted">
+	<div class="container">
+		<p class="float-xs-right">
+			<a href="#">Back to top</a>
+		</p>
+		<p>RoboGist was made with love❤ by <a href="http://rlemon.ca" target="_blank">rlemon</a>.</p>
+		<p>Want to help? <a href="https://github.com/rlemon/RoboGist">Contribute on GitHub</a> or create something awesome and <a href="/gist/add">share it!</a>.</p>
+	</div>
+</footer>
+
+</body>
+</html>

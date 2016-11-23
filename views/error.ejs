@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RoboGist:: <%= code %> error</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+	<div class="container">
+			<img src="/img/logo-main.png" /><small class="logo-text-small">Store</small>
+			<div class="pull-right nav">
+				<ul>
+					<% if( typeof user === 'undefined' ) { %>
+						<a class="nav-link" href="/">home</a>
+						<a class="nav-link" href="/browse">browse</a>
+						<a class="nav-link" href="/login">login</a>
+					<% } else { %>
+						<a class="nav-link" href="/">home</a>
+						<a class="nav-link" href="/browse">browse</a>
+						<a class="nav-link" href="/gist/add">add gist</a>
+						<a class="nav-link" href="#" onclick="document.getElementById('logoutForm').submit()">logout</a>
+						<form action="logout" method="post" id="logoutForm"></form>
+					<% } %>
+				</ul>
+			</div>
+	</div>
+</nav>
+
+<div class="light container text-center">
+<h2><%= code %> error.</h2>
+<p><pre><code>
+	<%= message %>
+</code></pre></p>
+</div>
+
+
+<footer class="text-muted">
+	<div class="container">
+		<p>RoboGist was made with love❤ by <a href="http://rlemon.ca" target="_blank">rlemon</a>.</p>
+		<p>Want to help? <a href="https://github.com/rlemon/RoboGist">Contribute on GitHub</a> or create something awesome and <a href="/gist/add">share it!</a>.</p>
+	</div>
+</footer>
+
+</body>
+</html>

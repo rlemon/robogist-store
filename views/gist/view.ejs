@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RoboGist:: <%=gist.name%></title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+	<div class="container">
+			<img src="/img/logo-main.png" /><small class="logo-text-small">Store</small>
+			<div class="pull-right nav">
+				<ul>
+					<% if( typeof user === 'undefined' ) { %>
+						<a class="nav-link" href="/">home</a>
+						<a class="nav-link" href="/browse">browse</a>
+						<a class="nav-link" href="/login">login</a>
+					<% } else { %>
+						<a class="nav-link" href="/">home</a>
+						<a class="nav-link" href="/browse">browse</a>
+						<a class="nav-link" href="/gist/add">add gist</a>
+						<a class="nav-link" href="#" onclick="document.getElementById('logoutForm').submit()">logout</a>
+						<form action="logout" method="post" id="logoutForm"></form>
+					<% } %>
+				</ul>
+			</div>
+	</div>
+</nav>
+
+<div class="light container text-center">
+
+<div class="gist-card">
+	<div class="container-fluid">
+		<div class="gist-card-wrapper row">
+			<div class="gist-screenshot col-md-6">
+	            <div class="img" style="background-image:url(/user-images/<%= gist.screenshot %>)"></div>
+			</div>
+			<div class="gist-details col-md-6">
+				<h3 class="gist-name"><%= gist.name %></h3>
+				<div class="stats text-right">
+					<div class="stars">
+						<span class="fa fa-star-o"></span>
+						<span class="fa fa-star-o"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
+					</div>
+					<span><%= gist.total_installs %> installs</span>
+				</div>
+				<p class="gist-description"><%= gist.description %></p>
+				<p class="gist-description">Matches: <code>/<%= gist.matches %>/</code></p>
+				<p class="gist-description">Check it out on github: <a href="http://gist.github.com/<%=gist.gistid%>" target="_blank"><%=gist.gistid%></a></p>
+				<p class="">
+					<button class="btn btn-primary" id="install">Install</button> 
+					<button class="btn btn-secondary" disabled><i class="fa fa-flag"></i> Report</button>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+<form id="gistinfo">
+	<input type="hidden" id="gistid" value='<%-gist.gistid%>' />
+	<input type="hidden" id="gistname" value='<%-gist.name%>' />
+	<input type="hidden" id="gistmatches" value='<%-gist.matches%>' />
+</form>
+<script src="/js/script.js"></script>
+<footer class="text-muted">
+	<div class="container">
+		<p class="float-xs-right">
+			<a href="#">Back to top</a>
+		</p>
+		<p>RoboGist was made with love❤ by <a href="http://rlemon.ca" target="_blank">rlemon</a>.</p>
+		<p>Want to help? <a href="https://github.com/rlemon/RoboGist">Contribute on GitHub</a> or create something awesome and <a href="/gist/add">share it!</a>.</p>
+	</div>
+</footer>
+
+</body>
+</html>
